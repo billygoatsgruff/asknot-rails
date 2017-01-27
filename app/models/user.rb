@@ -2,8 +2,8 @@ class User < ActiveRecord::Base
 
   def response_hash
     {
-      twitter_handle: user.twitter_handle,
-      api_key: user.api_key
+      twitter_handle: self.twitter_handle,
+      api_key: self.api_key
     }    
   end
 end
