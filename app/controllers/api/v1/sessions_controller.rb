@@ -12,8 +12,8 @@ class Api::V1::SessionsController < ApiController
     response = t.verify_credentials
 
     if response.class == Twitter::User
-      user = User.find_by(twitter_handle: "#{response.screen_name.downcase}")
-      user = User.create(twitter_handle: "#{response.screen_name.downcase}", api_key: SecureRandom.base64) unless user
+      user = User.find_by(twitter_handle: "#{response.twitter_handle.downcase}")
+      user = User.create(twitter_handle: "#{response.twitter_handle.downcase}", api_key: SecureRandom.base64) unless user
       
       render json: user.response_hash, status: :ok
     else
