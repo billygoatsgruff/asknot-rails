@@ -1,4 +1,4 @@
-class API::V1::SessionsController < ApiController
+class Api::V1::SessionsController < ApiController
   skip_before_filter :authenticate!
 
   def create
