@@ -4,9 +4,9 @@ ActiveAdmin.register Tweet do
   
   controller do
     def create
-      @device = Device.new(permitted_params[:device])
+      @tweet = Tweet.new(permitted_params[:tweet])
 
-      if @device.save
+      if @tweet.save
         redirect_to collection_url
       else
         redirect_to :back
