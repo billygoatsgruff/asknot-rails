@@ -4,6 +4,7 @@ ActiveAdmin.register User do
 
   controller do
     def create
+      authorize! :read, User.new
       @user = User.new(permitted_params[:user])
       @user.api_key = SecureRandom.base64
 
@@ -16,17 +17,21 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    f.inputs "User Info" do
-      f.input :twitter_handle
-      f.input :api_key
+    if authorized? :create, User.new
+      f.inputs "User Info" do
+        f.input :twitter_handle
+        f.input :api_key
+      end
+      f.actions
     end
-    f.actions
   end
 
   index do
-    column :id
-    column :twitter_handle
-    column :api_key
-    column :created_at
+    if authorized? :read, User.new
+      column :id
+      column :twitter_handle
+      column :api_key
+      column :created_at
+    end
   end
 end

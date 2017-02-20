@@ -1,10 +1,11 @@
 ActiveAdmin.register Tweet do
 
-  permit_params :twitter_id, :active
+  permit_params :twitter_id, :why, :active
   
   controller do
     def create
       @tweet = Tweet.new(permitted_params[:tweet])
+      @tweet.active = false unless authorized? :activate, @tweet
 
       if @tweet.save
         redirect_to collection_url
@@ -17,18 +18,19 @@ ActiveAdmin.register Tweet do
   form do |f|
     f.inputs "Tweet Info" do
       f.input :twitter_id
-      f.input :active
+      f.input :why
+      f.input :active if authorized? :activate, Tweet.new
     end
 
     f.actions
   end
 
   index do
-    column :id
-    column :twitter_id
     column :created_at
+    column :twitter_id
     column :active
+    column :why
     
-    default_actions
+    actions
   end
 end

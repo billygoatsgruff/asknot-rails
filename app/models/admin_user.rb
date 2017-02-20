@@ -3,4 +3,6 @@ class AdminUser < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
+
+  enum admin_type: [ :submitter, :approver, :full_admin ]
 end
