@@ -1,6 +1,6 @@
 ActiveAdmin.register Tweet do
 
-  permit_params :twitter_id
+  permit_params :twitter_id, :active
   
   controller do
     def create
@@ -17,6 +17,7 @@ ActiveAdmin.register Tweet do
   form do |f|
     f.inputs "Tweet Info" do
       f.input :twitter_id
+      f.input :active
     end
 
     f.actions
@@ -26,5 +27,8 @@ ActiveAdmin.register Tweet do
     column :id
     column :twitter_id
     column :created_at
+    column :active
+    
+    default_actions
   end
 end

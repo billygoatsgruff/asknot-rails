@@ -1,3 +1,5 @@
+require 'bcrypt'
+
 class Api::V1::SessionsController < ApiController
   skip_before_filter :authenticate!
 
@@ -12,10 +14,12 @@ class Api::V1::SessionsController < ApiController
     response = t.verify_credentials
 
     if response.class == Twitter::User
-      user = User.find_by(twitter_handle: "#{response.screen_name.downcase}")
-      user = User.create(twitter_handle: "#{response.screen_name.downcase}", api_key: SecureRandom.base64) unless user
+      twitter_handle = BCrypt::Password.create(response.screen_name.downcase)
+
+      user = User.find_by(twitter_handle: "#{twitter_handle}")
+      user = User.create(twitter_handle: "#{twitter_handle}", api_key: SecureRandom.base64) unless user
       
-      render json: user.response_hash, status: :ok
+      render json: user.response_hash(response.screen_name), status: :ok
     else
       head :unauthorized
     end
