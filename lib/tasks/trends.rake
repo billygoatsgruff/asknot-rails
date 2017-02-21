@@ -8,7 +8,7 @@ namespace :trends do
       config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
     end
 
-    twitter_trends = t.trends(1, {})
+    twitter_trends = t.trends(2514815, {})
 
     twitter_trends.each do |twitter_trend|
       tweets = Tweet.where("full_text LIKE ?", "%#{twitter_trend.name}%")
