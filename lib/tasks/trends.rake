@@ -14,7 +14,7 @@ namespace :trends do
     twitter_trends.each do |twitter_trend|
       tweets = Tweet.where("LOWER(full_text) LIKE ?", "%#{twitter_trend.downcase}%")
       puts "#{twitter_trend}: #{tweets.size}"
-      if tweets.size > 1
+      if tweets.size > 0
         trend = Trend.find_or_create_by(text: twitter_trend)
         tweets.each do |tweet|
           TrendTweet.find_or_create_by(trend_id: trend.id, tweet_id: tweet.id)
