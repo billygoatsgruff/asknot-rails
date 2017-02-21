@@ -9,11 +9,13 @@ namespace :trends do
     end
 
     twitter_trends = t.trends(2514815, {})
+    twitter_trends = twitter_trends.map &:name
 
     twitter_trends.each do |twitter_trend|
-      tweets = Tweet.where("full_text LIKE ?", "%#{twitter_trend.name}%")
+      tweets = Tweet.where("full_text LIKE ?", "%#{twitter_trend}%")
+      puts "#{twitter_trend}: #{tweets.size}"
       if tweets.size > 1
-        trend = Trend.find_or_create_by(text: twitter_trend.name)
+        trend = Trend.find_or_create_by(text: twitter_trend)
         tweets.each do |tweet|
           TrendTweet.find_or_create_by(trend_id: trend.id, tweet_id: tweet.id)
         end
