@@ -12,7 +12,7 @@ namespace :trends do
     twitter_trends = twitter_trends.map &:name
 
     twitter_trends.each do |twitter_trend|
-      tweets = Tweet.where("full_text LIKE ?", "%#{twitter_trend}%")
+      tweets = Tweet.where("LOWER(full_text) LIKE ?", "%#{twitter_trend.downcase}%")
       puts "#{twitter_trend}: #{tweets.size}"
       if tweets.size > 1
         trend = Trend.find_or_create_by(text: twitter_trend)
