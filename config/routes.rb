@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :tweets, only: [:index]
       resources :sessions, only: [:create]
+      resources :retweets, only: [:create]
+      resources :users, only: [:show]
     end
   end
 end

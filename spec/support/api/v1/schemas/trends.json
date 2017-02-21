@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
-    "tweets": {
+    "trends": {
       "type": "array",
       "items": {
         "type": "object",
@@ -10,30 +10,18 @@
           "id": {
             "type": "integer"
           },
-          "created_at": {
-            "type": "string"
-          },
-          "updated_at": {
-            "type": "string"
-          },
-          "twitter_id": {
-            "type": "integer"
-          },
-          "why": {
+          "text": {
             "type": "string"
           }
         },
         "required": [
           "id",
-          "created_at",
-          "updated_at",
-          "twitter_id",
-          "why"
+          "text"
         ]
       }
     }
   },
   "required": [
-    "tweets"
+    "trends"
   ]
 }

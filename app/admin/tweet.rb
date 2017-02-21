@@ -30,6 +30,7 @@ ActiveAdmin.register Tweet do
     column :twitter_id
     column :active
     column :why
+    column :full_text
     
     actions
   end
