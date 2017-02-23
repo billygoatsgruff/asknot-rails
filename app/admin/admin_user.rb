@@ -9,6 +9,7 @@ ActiveAdmin.register AdminUser do
       column :current_sign_in_at
       column :sign_in_count
       column :created_at
+      column :admin_type
       actions
     end
   end
@@ -24,6 +25,7 @@ ActiveAdmin.register AdminUser do
         f.input :email
         f.input :password
         f.input :password_confirmation
+        f.input :admin_type
       end
       f.actions
     end

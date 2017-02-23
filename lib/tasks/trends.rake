@@ -8,7 +8,22 @@ namespace :trends do
       config.consumer_secret = ENV["TWITTER_CONSUMER_SECRET"]
     end
 
-    twitter_trends = t.trends(2514815, {})
+    add_trends(t.trends(2514815, {})) #dc 
+    add_trends(t.trends(2459115, {})) #nyc
+    add_trends(t.trends(2487956, {})) #sf
+    add_trends(t.trends(2442047, {})) #la
+    add_trends(t.trends(12590119, {})) #houston
+    add_trends(t.trends(2388929, {})) #dallas
+    add_trends(t.trends(2347593, {})) #nd
+    add_trends(t.trends(2347597, {})) #pa
+    add_trends(t.trends(2347594, {})) #ohio
+    add_trends(t.trends(2347568, {})) #florida
+    add_trends(t.trends(2347608, {})) #wi
+    add_trends(t.trends(2347581, {})) #mi
+    add_trends(t.trends(2379574, {})) #chicago
+  end
+
+  def add_trends(twitter_trends)
     twitter_trends = twitter_trends.map &:name
 
     twitter_trends.each do |twitter_trend|
