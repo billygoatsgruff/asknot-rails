@@ -1,4 +1,4 @@
-class Api::V1::DevicesController < Api::V1::ApiController
+class Api::V1::DevicesController < ApiController
 
   def create
     device = Device.where(push_id: params[:device][:push_id]).first
