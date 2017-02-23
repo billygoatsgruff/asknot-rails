@@ -25,5 +25,6 @@ ActiveAdmin.register Trend do
     column :id
     column :text
     column :created_at
+    actions
   end
 end
