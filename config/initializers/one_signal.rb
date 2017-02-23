@@ -1,0 +1,2 @@
+OneSignal::OneSignal.api_key = "YzM0ZWU2ZjctMTZiOC00NjU3LTkxMWQtNjY4ZWFkNjJmZjBl"
+OneSignal::OneSignal.user_auth_key = "OTI2MzIyMzktZDMxMy00NWE1LWJiMmYtY2FjMDk3MjFkMjIz"

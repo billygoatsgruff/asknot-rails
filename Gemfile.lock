@@ -209,6 +209,7 @@ GEM
     naught (1.1.0)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    one_signal (1.2.0)
     orm_adapter (0.5.0)
     parity (2.0.1)
     pg (0.19.0)
@@ -387,6 +388,7 @@ DEPENDENCIES
   json_spec
   kaminari
   launchy
+  one_signal
   parity
   pg (~> 0.15)
   pry-rails

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'users endpoints' do
-  describe 'GET /users/:id' do
+describe 'trends endpoints' do
+  describe 'GET /trends/:id' do
     it 'returns JSON for trends' do
       user = create(:user)
       tweet = create(:tweet)
@@ -11,7 +11,7 @@ describe 'users endpoints' do
       trend = create(:trend, text: "#hashtag")
       trend_tweet = create(:trend_tweet, tweet_id: tweet.id, trend_id: trend.id)
 
-      get(api_v1_user_url(user), {}, authorization_headers)
+      get(api_v1_trends_url, {}, authorization_headers(user))
 
       expect(response).to have_http_status :ok
       expect(response).to match_response_schema :trends
@@ -30,7 +30,7 @@ describe 'users endpoints' do
       irrelevant_trend_tweet = create(:trend_tweet, tweet_id: irrelevant_tweet.id, trend_id: irrelevant_trend.id)
       irrelevant_retweet = create(:retweet, tweet_id: irrelevant_tweet.id, user_id: user.id)
 
-      get(api_v1_user_url(user), {}, authorization_headers)
+      get(api_v1_trends_url, {}, authorization_headers(user))
 
       expect(json['trends'].size).to eq 1
     end
@@ -48,7 +48,7 @@ describe 'users endpoints' do
       irrelevant_trend = create(:trend, text: "#AnotherHashtag")
       irrelevant_trend_tweet = create(:trend_tweet, tweet_id: irrelevant_tweet.id, trend_id: irrelevant_trend.id)
 
-      get(api_v1_user_url(user), {}, authorization_headers)
+      get(api_v1_trends_url, {}, authorization_headers(user))
 
       expect(json['trends'].size).to eq 1
     end
@@ -64,7 +64,7 @@ describe 'users endpoints' do
       irrelevant_retweet = create(:retweet, tweet_id: irrelevant_tweet.id, user_id: user.id)
       irrelevant_trend_tweet = create(:trend_tweet, tweet_id: irrelevant_tweet.id, trend_id: trend.id)
 
-      get(api_v1_user_url(user), {}, authorization_headers)
+      get(api_v1_trends_url, {}, authorization_headers(user))
 
       expect(json['trends'].size).to eq 1
     end
@@ -81,7 +81,7 @@ describe 'users endpoints' do
       irrelevant_trend = create(:trend, text: "#AnotherHashtag")
       irrelevant_trend_tweet = create(:trend_tweet, tweet_id: irrelevant_tweet.id, trend_id: irrelevant_trend.id)
 
-      get(api_v1_user_url(user), {}, authorization_headers)
+      get(api_v1_trends_url, {}, authorization_headers(user))
 
       expect(json['trends'].size).to eq 1
     end
