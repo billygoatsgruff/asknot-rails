@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170223021557) do
+ActiveRecord::Schema.define(version: 20170808231659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,20 +79,24 @@ ActiveRecord::Schema.define(version: 20170223021557) do
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.integer  "twitter_id", limit: 8
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.integer  "twitter_id",     limit: 8
     t.boolean  "active"
     t.text     "why"
     t.text     "full_text"
+    t.integer  "retweets_count",           default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "twitter_handle"
     t.string   "api_key"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "push_provider_id"
+    t.integer  "retweets_count",   default: 0,     null: false
+    t.boolean  "has_shared",       default: false, null: false
+    t.boolean  "is_supporter",     default: false, null: false
   end
 
 end

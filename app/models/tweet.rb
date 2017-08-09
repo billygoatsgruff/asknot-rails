@@ -1,6 +1,9 @@
 class Tweet < ActiveRecord::Base
   validates :full_text, presence: true
 
+  has_many :retweets, dependent: :destroy
+  has_many :trend_tweets, dependent: :destroy
+
   before_validation :fetch_text
 
   private 

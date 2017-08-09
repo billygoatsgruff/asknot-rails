@@ -27,6 +27,7 @@ gem 'activeadmin', :github => "activeadmin"
 gem 'active_model_serializers', '0.8.3'
 gem 'api-pagination'
 gem 'bcrypt', '~> 3.1.7'
+gem 'counter_culture', '~> 0.1.23'
 gem 'devise'
 gem 'kaminari'
 gem 'one_signal'

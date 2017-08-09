@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :retweets, dependent: :destroy
 
   def response_hash(handle)
     {

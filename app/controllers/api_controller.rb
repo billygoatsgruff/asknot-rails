@@ -26,6 +26,10 @@ class ApiController < ApplicationController
     ENV.fetch('PER_PAGE', 20)
   end
 
+  def current_user
+    @current_user
+  end
+
   def authenticate!
     @current_user = User.find_by(api_key: request.headers["X-Api-Key"])
     if @current_user.blank?
