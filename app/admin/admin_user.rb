@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUser do
-  permit_params :email, :password, :password_confirmation
+  permit_params :email, :password, :password_confirmation, :admin_type
 
   index do
     if authorized? :read, AdminUser.new
@@ -23,8 +23,6 @@ ActiveAdmin.register AdminUser do
     if authorized? :read, AdminUser.new
       f.inputs "Admin Details" do
         f.input :email
-        f.input :password
-        f.input :password_confirmation
         f.input :admin_type
       end
       f.actions
