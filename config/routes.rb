@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :retweets, only: [:create, :destroy]
       resources :devices, only: [:create]
       resources :trends, only: [:index]
+      resource :version, only: :show
     end
   end
 end
