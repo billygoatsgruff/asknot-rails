@@ -10,9 +10,18 @@ class AdminAuthorizationAdapter < ActiveAdmin::AuthorizationAdapter
       else
         true
       end
+    when normalized(AdminUser)
+      if user.admin_type == "full_admin"
+        true
+      elsif user.admin_type == "admin_manager"
+        action == :create || action == :destroy || action == :index || action == :read
+      elsif action == :update && user.id == subject.id
+        true
+      end
     else
       user.admin_type == "full_admin"
     end
+
   end
 
   def is_tweet_subject(subject)

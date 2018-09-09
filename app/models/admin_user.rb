@@ -4,5 +4,5 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable
 
-  enum admin_type: [ :submitter, :approver, :full_admin ]
+  enum admin_type: [ :submitter, :approver, :full_admin, :admin_manager ]
 end

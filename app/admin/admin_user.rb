@@ -20,13 +20,16 @@ ActiveAdmin.register AdminUser do
   filter :created_at
 
   form do |f|
-    if authorized? :read, AdminUser.new
-      f.inputs "Admin Details" do
+    f.inputs "Admin Details", for: @admin do
+      if (authorized? :update, @admin) || f.object.id == current_admin_user.id
         f.input :email
-        f.input :admin_type
+        if f.object.id == current_admin_user.id || current_admin_user.admin_type == "full_admin" || current_admin_user.admin_type == "admin_manager"
+          f.input :password 
+        end
+        f.input :admin_type if current_admin_user.admin_type == "full_admin"
       end
-      f.actions
     end
+    f.actions
   end
 
 end
