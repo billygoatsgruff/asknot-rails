@@ -1,10 +1,10 @@
-ActiveAdmin.register Tweet do
+ActiveAdmin.register SuggestedTweet do
 
-  permit_params :twitter_id, :why, :active
+  permit_params :twitter_id
   
   controller do
     def create
-      @tweet = Tweet.new(permitted_params[:tweet])
+      @tweet = SuggestedTweet.new(permitted_params[:tweet])
       @tweet.active = false unless authorized? :activate, @tweet
 
       if @tweet.save
@@ -16,10 +16,8 @@ ActiveAdmin.register Tweet do
   end
 
   form do |f|
-    f.inputs "Tweet Info" do
+    f.inputs "SuggestedTweet Info" do
       f.input :twitter_id
-      f.input :why
-      f.input :active if authorized? :activate, Tweet.new
     end
 
     f.actions
@@ -28,8 +26,7 @@ ActiveAdmin.register Tweet do
   index do
     column :created_at
     column :twitter_id
-    column :active
-    column :why
+    column :user_id
     column :full_text
     
     actions

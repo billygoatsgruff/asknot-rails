@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808231659) do
+ActiveRecord::Schema.define(version: 20201118204005) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,14 @@ ActiveRecord::Schema.define(version: 20170808231659) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "suggested_tweets", force: :cascade do |t|
+    t.integer  "twitter_id"
+    t.text     "full_text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
   create_table "trend_tweets", force: :cascade do |t|
     t.integer  "trend_id"
     t.integer  "tweet_id"
@@ -99,4 +107,5 @@ ActiveRecord::Schema.define(version: 20170808231659) do
     t.boolean  "is_supporter",     default: false, null: false
   end
 
+  add_foreign_key "suggested_tweets", "users"
 end

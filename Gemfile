@@ -20,7 +20,7 @@ gem 'counter_culture', '~> 0.1.23'
 gem 'devise'
 gem 'kaminari'
 gem 'one_signal'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'rake', '< 12.0.0'
 gem 'twitter'
 gem 'unicorn'
