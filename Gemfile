@@ -21,7 +21,7 @@ gem 'devise'
 gem 'kaminari'
 gem 'one_signal'
 gem 'rails_12factor', group: :production
-gem 'rake', '< 12.0.0'
+gem 'rake', '< 14.0.0'
 gem 'twitter'
 gem 'unicorn'
 gem 'versionist'
