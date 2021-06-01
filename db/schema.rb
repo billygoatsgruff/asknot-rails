@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201119021947) do
+ActiveRecord::Schema.define(version: 20210428185936) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -94,6 +94,19 @@ ActiveRecord::Schema.define(version: 20201119021947) do
     t.text     "why"
     t.text     "full_text"
     t.integer  "retweets_count",           default: 0, null: false
+  end
+
+  create_table "url_actions", force: :cascade do |t|
+    t.text     "url"
+    t.string   "title"
+    t.string   "subtitle"
+    t.string   "prompt"
+    t.string   "action_title"
+    t.text     "action_text"
+    t.string   "button_text"
+    t.boolean  "active"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
