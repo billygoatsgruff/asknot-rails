@@ -1,10 +1,10 @@
-ActiveAdmin.register Tweet do
+ActiveAdmin.register UrlAction do
 
   permit_params :url, :title, :subtitle, :prompt, :action_title, :action_text, :button_text
   
   controller do
     def create
-      @url_action = Tweet.new(permitted_params[:url_action])
+      @url_action = UrlAction.new(permitted_params[:url_action])
       @url_action.active = false unless authorized? :activate, @url_action
 
       if @url_action.save
@@ -24,7 +24,7 @@ ActiveAdmin.register Tweet do
       f.input :action_title
       f.input :action_text
       f.input :button_text
-      f.input :active if authorized? :activate, Tweet.new
+      f.input :active if authorized? :activate, UrlAction.new
     end
 
     f.actions
